@@ -31,6 +31,26 @@ Output on uni server:
   Selected multilib: .;@m64
 ```
 
+Switch to Clang 9 (for access the latest C++ Threading features)
+
+```bash
+  bash-4.2$ source /usr/local/bin/clang9.setup
+  bash-4.2$ clang -v
+  clang version 9.0.0 (tags/RELEASE_900/final)
+  Target: x86_64-unknown-linux-gnu
+  Thread model: posix
+  InstalledDir: /usr/local/clang+llvm-9.0.0-x86_64-linux-sles11.3/bin
+  Found candidate GCC installation: /opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7
+  Found candidate GCC installation: /opt/rh/devtoolset-8/root/usr/lib/gcc/x86_64-redhat-linux/8
+  Found candidate GCC installation: /usr/lib/gcc/x86_64-redhat-linux/4.4.7
+  Found candidate GCC installation: /usr/lib/gcc/x86_64-redhat-linux/4.8.2
+  Found candidate GCC installation: /usr/lib/gcc/x86_64-redhat-linux/4.8.5
+  Selected GCC installation: /opt/rh/devtoolset-8/root/usr/lib/gcc/x86_64-redhat-linux/8
+  Candidate multilib: .;@m64
+  Candidate multilib: 32;@m32
+  Selected multilib: .;@m64
+```
+
 ## Usage
 
 - build image (from source if you need): `docker build . -t jiting/gu-clang`
@@ -38,3 +58,5 @@ Output on uni server:
 - pull image: `docker pull jiting/gu-clang`
 
 - init a container in your code dir: `docker run -it --rm -v "$(pwd)":/app jiting/gu-clang`
+
+You don't need to run `scl enable devtoolset-8 llvm-toolset-7.0 bash` since it already enable by default.
